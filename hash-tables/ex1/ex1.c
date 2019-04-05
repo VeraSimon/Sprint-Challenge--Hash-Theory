@@ -17,14 +17,15 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
         if (hashVal != -1)
         {
             Answer *weightAnswer = malloc(sizeof(Answer));
-            weightAnswer->index_1 = hashVal;
-            weightAnswer->index_2 = i;
+            weightAnswer->index_1 = i;
+            weightAnswer->index_2 = hashVal;
             return weightAnswer;
         }
         else
         {
             // TODO: Update this to native hash insert
-            ht->storage[weight] = i;
+            // ht->storage[weight] = i;
+            hash_table_insert(ht, weight, i);
         }
     }
 
