@@ -23,8 +23,6 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
         }
         else
         {
-            // TODO: Update this to native hash insert
-            // ht->storage[weight] = i;
             hash_table_insert(ht, weight, i);
         }
     }
