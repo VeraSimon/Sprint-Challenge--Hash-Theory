@@ -68,7 +68,7 @@ Both Hash Table problems will be graded as follows:
   *  6: Code resembles the correct solution
   * 10: Tests pass
   * 11: Tests pass, no hash table memory leaks
-  * 12: Tests pass, no hash table memory leaks, linear runtime complexity  
+  * 12: Tests pass, no hash table memory leaks, linear runtime complexity
 
 
 #### [Computation Stretch](https://github.com/LambdaSchool/Sprint-Challenge--Hash-Theory/tree/master/theory) - 4 pts
@@ -80,7 +80,7 @@ Both Hash Table problems will be graded as follows:
 
 ### Grading
 
-Students can receive up to 55 points in total for this Sprint Challenge (not including 4 extra credit points). 
+Students can receive up to 55 points in total for this Sprint Challenge (not including 4 extra credit points).
 
   * __Challenge__: 35
   * __Interview__: 20
@@ -91,4 +91,4 @@ The score distributions are as follows:
 
   * __3__: >= 48 points
   * __2__: >= 35 points
-  * __1__: < 34 points 
+  * __1__: < 34 points
