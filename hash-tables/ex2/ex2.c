@@ -6,46 +6,60 @@
 
 char **reconstruct_trip(Ticket **tickets, int length)
 {
-  HashTable *ht = create_hash_table(16);
-  char **route = malloc(length * sizeof(char *));
+    HashTable *ht = create_hash_table(16);
+    char **route = malloc(length * sizeof(char *));
 
-  // YOUR CODE HERE
+    // YOUR CODE HERE
+    for (int i = 0; i < length; i++)
+    {
+        if (strcmp(tickets[i]->source, "NONE") == 0)
+        {
+            route[0] = tickets[i]->destination;
+        }
 
-  return route;
+        hash_table_insert(ht, tickets[i]->source, tickets[i]->destination);
+    }
+
+    for (int i = 1; i < length - 1; i++)
+    {
+        char *prevHop = route[i - 1];
+        route[i] = hash_table_retrieve(ht, prevHop);
+    }
+
+    return route;
 }
 
 void print_route(char **route, int length)
 {
-  for (int i = 0; i < length; i++) {
-    printf("%s\n", route[i]);
-  }
+    for (int i = 0; i < length; i++)
+    {
+        printf("%s\n", route[i]);
+    }
 }
-
-
 
 #ifndef TESTING
 int main(void)
 {
-  // Short test
-  Ticket **tickets = malloc(3 * sizeof(Ticket *));
+    // Short test
+    Ticket **tickets = malloc(3 * sizeof(Ticket *));
 
-  Ticket *ticket_1 = malloc(sizeof(Ticket));
-  ticket_1->source = "NONE";
-  ticket_1->destination = "PDX";
-  tickets[0] = ticket_1;
+    Ticket *ticket_1 = malloc(sizeof(Ticket));
+    ticket_1->source = "NONE";
+    ticket_1->destination = "PDX";
+    tickets[0] = ticket_1;
 
-  Ticket *ticket_2 = malloc(sizeof(Ticket));
-  ticket_2->source = "PDX";
-  ticket_2->destination = "DCA";
-  tickets[1] = ticket_2;
+    Ticket *ticket_2 = malloc(sizeof(Ticket));
+    ticket_2->source = "PDX";
+    ticket_2->destination = "DCA";
+    tickets[1] = ticket_2;
 
-  Ticket *ticket_3 = malloc(sizeof(Ticket));
-  ticket_3->source = "DCA";
-  ticket_3->destination = "NONE";
-  tickets[2] = ticket_3;
+    Ticket *ticket_3 = malloc(sizeof(Ticket));
+    ticket_3->source = "DCA";
+    ticket_3->destination = "NONE";
+    tickets[2] = ticket_3;
 
-  print_route(reconstruct_trip(tickets, 3), 3); // PDX, DCA, NONE
+    print_route(reconstruct_trip(tickets, 3), 3); // PDX, DCA, NONE
 
-  return 0;
+    return 0;
 }
 #endif
